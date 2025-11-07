@@ -1,0 +1,6 @@
+1!2 // literal operator literal
+1!=2 // literal operator (!=) literal
+1! == 3 // literal operator (!) operator (==) literal
+1==>4 // literal operator (==) operator (>) literal
+** // operator operator
+True && False // literal operator literal
