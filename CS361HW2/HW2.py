@@ -52,6 +52,6 @@ if __name__ == '__main__':
     #print(fibonacci(num))
 
     # if not terminating, innermost evaluation
-    #test_language(0,1)
+    #test_language(1,1)
 
     print(fib_iterative(num))
