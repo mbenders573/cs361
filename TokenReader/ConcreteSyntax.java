@@ -51,6 +51,9 @@ public class ConcreteSyntax {
 		for (int i = 0; i < header.length; i++)
 			// bypass " main { "
 			match(header[i]);
+
+		p.decpart = declarations();
+		p.body = statements();
 		return p;
 	}
 
@@ -126,8 +129,10 @@ public class ConcreteSyntax {
 		else if (token.getValue().equals("while")) {
 			// WhileStatement
 			// TODO TO BE COMPLETED
+			s = whileStatement();
 		} else if (token.getType().equals("Identifier")) { // Assignment
 			// TODO TO BE COMPLETED
+			
 		} else
 			throw new RuntimeException(SyntaxError("Statement"));
 		return s;
@@ -268,6 +273,16 @@ public class ConcreteSyntax {
 		// IfStatement --> if ( Expression ) Statement { else Statement }opt
 		Conditional c = new Conditional();
 		// TODO TO BE COMPLETED
+		if (token.getValue().equals("if")) {
+			match("(");
+			c.test = expression();
+			match(")");
+			c.thenbranch = statement();
+			token = input.nextToken();
+			if (token.getValue().equals("else")) {
+				c.elsebranch = statement();
+			}
+		}
 		return c;
 	}
 
@@ -275,6 +290,13 @@ public class ConcreteSyntax {
 		// WhileStatement --> while ( Expression ) Statement
 		Loop l = new Loop();
 		// TODO TO BE COMPLETED
+		if (token.getValue().equals("while")) {
+			match("(");
+			l.test = expression();
+			match(")");
+			l.body = statement();
+			token = input.nextToken();
+		}
 		return l;
 	}
 
