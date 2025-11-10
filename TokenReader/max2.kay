@@ -1,0 +1,16 @@
+main {
+    integer a, b, max;
+
+    a := 3;
+    b := 5;
+
+    if (a < b) {
+        max := b;
+    }
+    if (a > b) {
+        max := a;
+    }
+    if (a == b) {
+        max := 0;
+    }
+}
