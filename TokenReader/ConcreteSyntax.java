@@ -67,6 +67,7 @@ public class ConcreteSyntax {
 				|| token.getValue().equals("bool")) {
 			declaration(ds);
 		}
+
 		return ds;
 	}
 
@@ -134,7 +135,7 @@ public class ConcreteSyntax {
 			s = whileStatement();
 		} else if (token.getType().equals("Identifier")) { // Assignment
 			// TODO TO BE COMPLETED
-			
+			s = assignment();
 		} else
 			throw new RuntimeException(SyntaxError("Statement"));
 		return s;
@@ -223,7 +224,7 @@ public class ConcreteSyntax {
 		e = negation();
 		while (token.getValue().equals("*") || token.getValue().equals("/")) {
 			b = new Binary();
-			// TODO TO BE COMPLETEDWW
+			// TODO TO BE COMPLETED
 			e = b;
 		}
 		return e;
