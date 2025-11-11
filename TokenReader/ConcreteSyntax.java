@@ -46,14 +46,16 @@ public class ConcreteSyntax {
 	public Program program() {
 		// TODO TO BE COMPLETED 
 		// Program --> main '{' Declarations Statements '}'
-		String[] header = { };
 		Program p = new Program();
-		for (int i = 0; i < header.length; i++)
-			// bypass " main { "
-			match(header[i]);
+		
+		match("main");
+		match("{");
 
 		p.decpart = declarations();
 		p.body = statements();
+
+		match("}");
+
 		return p;
 	}
 
@@ -293,13 +295,12 @@ public class ConcreteSyntax {
 		// WhileStatement --> while ( Expression ) Statement
 		Loop l = new Loop();
 		// TODO TO BE COMPLETED
-		if (token.getValue().equals("while")) {
-			match("(");
-			l.test = expression();
-			match(")");
-			l.body = statement();
-			token = input.nextToken();
-		}
+		match("while");
+		match("(");
+		l.test = expression();
+		match(")");
+		l.body = statement();
+		
 		return l;
 	}
 
