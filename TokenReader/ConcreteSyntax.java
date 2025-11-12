@@ -227,6 +227,7 @@ public class ConcreteSyntax {
 		e = term();
 		while (token.getValue().equals("+") || token.getValue().equals("-")) {
 			// TODO TO BE COMPLETED
+			b = new Binary();
 			b.term1 = e;
 			b.op = new Operator(token.getValue());
 			token = input.nextToken();
