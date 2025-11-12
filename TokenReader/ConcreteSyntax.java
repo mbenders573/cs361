@@ -63,7 +63,7 @@ public class ConcreteSyntax {
 		// TODO TO BE COMPLETED 
 		// Declarations --> { Declaration }*
 		Declarations ds = new Declarations();
-		while (token.getValue().equals("int")
+		while (token.getValue().equals("integer")
 				|| token.getValue().equals("bool")) {
 			declaration(ds);
 		}
@@ -87,7 +87,7 @@ public class ConcreteSyntax {
 		else if (token.getValue().equals("bool"))
 			t = new Type(token.getValue());
 		else
-			throw new RuntimeException(SyntaxError("integer | boolean"));
+			throw new RuntimeException(SyntaxError("integer | bool"));
 		token = input.nextToken(); // pass over the type
 		return t;
 	}
@@ -155,11 +155,11 @@ public class ConcreteSyntax {
 		Assignment a = new Assignment();
 		if (token.getType().equals("Identifier")) {
 			// TODO TO BE COMPLETED
-			a.v = new Variable();
-			a.v.id = token.getValue();
+			a.target = new Variable();
+			a.target.id = token.getValue();
 			token = input.nextToken();
 			match(":=");
-			a.term = expression();
+			a.source = expression();
 			match(";");
 		} else
 			throw new RuntimeException(SyntaxError("Identifier"));
