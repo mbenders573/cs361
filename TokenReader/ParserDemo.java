@@ -9,7 +9,6 @@ public class ParserDemo {
 		ConcreteSyntax cSyntax = new ConcreteSyntax(tStream);
 		Program p = cSyntax.program();
 		System.out.println(p.display());
-		System.out.println("test");
 
 	}
 
